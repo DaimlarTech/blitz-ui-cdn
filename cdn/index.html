@@ -10,30 +10,32 @@
 </head>
 
 <body>
-    <!--/* 契約成立前書面への承諾 */-->
-    <div class="download-document" th:if="${record['f0185'] != null}" th:with="file=${record['f0185'][0]}">
+    <!--/* 不動産特定共同事業契約書 */-->
+    <div class="download-document" th:if="${record[10] != null}" th:with="file=${record[10][0]}">
         <!-- label -->
         <div class="label label_required">
             <span class="label__text">
-                契約成立前書面への承諾
+                不動産特定共同事業契約書への同意
             </span>
         </div>
         <!-- button -->
         <div class="download-document__inner">
             <button type="button" class="download-document__button" data-role="dialog-toggler"
-              data-target="#before_contract-pdf-popup" th:text="${file.fileName}">
+              data-target="#contract-pdf-popup" th:text="${file.fileName}">
                 契約成立前書面
             </button>
-            <span class="download-document__value" data-role="download-result-display" data-target="before_contract_at">
+            <span class="download-document__value" data-role="download-result-display"
+              data-target="contract_download_at">
                 未承諾
             </span>
         </div>
         <!--/* PDF Popup */-->
-        <div class="dialog dialog_pdf" id="before_contract-pdf-popup">
+        <div class="dialog dialog_pdf" id="contract-pdf-popup">
             <button type="button" class="dialog__close" data-role="dialog-dismiss"></button>
             <div class="dialog__container">
-                <div class="dialog__body" id="before_contract-pdf">
+                <div class="dialog__body" id="contract-pdf">
                     <div data-role="pdf-preview-dl" th:data-url="${file.fileUrl}"
+                      data-url="http://192.168.10.06:5173/contract.pdf"
                       class="pdf-preview pdf-preview_height_full">
                         <div class="img img_loading"></div>
                     </div>
@@ -45,252 +47,115 @@
                     </p>
 
                     <div class="scroll-check">
-                        <label for="before_contract-input" class="label label_check">
-                            <input type="checkbox" class="input input_check" id="before_contract-input"
-                              data-role="scroll-check" data-target="#before_contract-pdf" disabled required>
+                        <label for="contract-input" class="label label_check">
+                            <input type="checkbox" class="input input_check"
+                              id="contract-input"
+                              data-role="scroll-check" data-target="#contract-pdf"
+                              disabled
+                              required>
                             <span class="dialog__confirm-text">上記内容を確認しました。</span>
                         </label>
 
-                        <button type="button" class="button button_width_full button_size_sm"
+                        <button type="button"
+                          class="button button_width_full button_size_sm"
                           data-role="scroll-check-btn"
-                          data-target="#before_contract-input"
-                          data-download="#download-link-before_contract"
-                          data-result="before_contract_at"
-                          data-modal="#before_contract-pdf-popup"
+                          data-target="#contract-input"
+                          data-download="#download-link-contract"
+                          data-result="contract_download_at"
+                          data-modal="#contract-pdf-popup"
                           disabled>
                             同意してダウンロード
                         </button>
 
-                        <a th:href="${file.fileUrl}" id="download-link-before_contract"></a>
+                        <a th:href="${file.fileUrl}" id="download-link-contract"></a>
                     </div>
                 </div>
             </div>
         </div>
+        <input type="hidden" name="contract_download_at" data-role="download-result" required>
     </div>
 
-    <!--/* 重要事項説明書への承諾 */-->
-    <div class="download-document" th:if="${record['f052'] != null}" th:with="file=${record['f052'][0]}">
+    <!--/* 契約時追加出力書面 */-->
+    <div class="download-document"
+      th:if="${#maps.containsKey(record, 4) and #maps.containsKey(record[4], 180) and record[4][180]?.id  == 2 and record[15] != null}"
+      th:with="file=${record[15][0]}">
         <!-- label -->
         <div class="label label_required">
-            <span class="label__text">
-                重要事項説明書への承諾
+            <span class="label__text" th:text="|${record[14] ?: '契約時追加出力書面'}への同意|">
+                契約時追加出力書面への同意
             </span>
         </div>
         <!-- button -->
         <div class="download-document__inner">
-            <button type="button" class="download-document__button" data-role="dialog-toggler"
-              data-target="#before_import-pdf-popup" th:text="${file.fileName}">
-                重要事項説明書
-            </button>
-            <span class="download-document__value" data-role="download-result-display" data-target="before_import_at">
-                未承諾
-            </span>
-        </div>
-        <!--/* PDF Popup */-->
-        <div class="dialog dialog_pdf" id="before_import-pdf-popup">
-            <button type="button" class="dialog__close" data-role="dialog-dismiss"></button>
-            <div class="dialog__container">
-                <div class="dialog__body" id="before_import-pdf">
-                    <div data-role="pdf-preview-dl" th:data-url="${file.fileUrl}"
-                      class="pdf-preview pdf-preview_height_full">
-                        <div class="img img_loading"></div>
-                    </div>
-                </div>
-
-                <div class="dialog__footer">
-                    <p class="dialog__footer-text">
-                        ※最後まで確認しないとチェック及びダウンロードができません。
-                    </p>
-
-                    <div class="scroll-check">
-                        <label for="before_import-input" class="label label_check">
-                            <input type="checkbox" class="input input_check" id="before_import-input"
-                              data-role="scroll-check" data-target="#before_import-pdf" disabled required>
-                            <span class="dialog__confirm-text">上記内容を確認しました。</span>
-                        </label>
-
-                        <button type="button" class="button button_width_full button_size_sm"
-                          data-role="scroll-check-btn"
-                          data-target="#before_import-input"
-                          data-download="#download-link-before_import"
-                          data-result="before_import_at"
-                          data-modal="#before_import-pdf-popup"
-                          disabled>
-                            同意してダウンロード
-                        </button>
-
-                        <a th:href="${file.fileUrl}" id="download-link-before_import"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <input type="hidden" name="before_import_at" id="before_import_at" data-role="download-result">
-    </div>
-
-    <!--/* 財務諸表 */-->
-    <div class="download-document" th:if="${record['f0118'] != null}" th:with="file=${record['f0118'][0]}">
-        <!-- label -->
-        <div class="label label_required">
-            <span class="label__text">
-                財務諸表の確認
-            </span>
-        </div>
-        <!-- button -->
-        <div class="download-document__inner">
-            <button type="button" class="download-document__button" data-role="dialog-toggler"
-              data-target="#financial_statements-pdf-popup" th:text="${file.fileName}">
-                財務諸表
+            <button type="button" class="download-document__button"
+              data-role="dialog-toggler"
+              data-target="#agreement-pdf-popup" th:text="${file.fileName}">
+                契約成立前書面
             </button>
             <span class="download-document__value" data-role="download-result-display"
-              data-target="financial_statements_at">
+              data-target="agreement_download_at">
                 未承諾
             </span>
         </div>
         <!--/* PDF Popup */-->
-        <div class="dialog dialog_pdf" id="financial_statements-pdf-popup">
+        <div class="dialog dialog_pdf" id="agreement-pdf-popup">
             <button type="button" class="dialog__close" data-role="dialog-dismiss"></button>
             <div class="dialog__container">
-                <div class="dialog__body" id="financial_statements-pdf">
+                <div class="dialog__body" id="agreement-pdf">
                     <div data-role="pdf-preview-dl" th:data-url="${file.fileUrl}"
+                      data-url="http://192.168.10.06:5173/contract.pdf"
                       class="pdf-preview pdf-preview_height_full">
                         <div class="img img_loading"></div>
                     </div>
                 </div>
-
                 <div class="dialog__footer">
                     <p class="dialog__footer-text">
                         ※最後まで確認しないとチェック及びダウンロードができません。
                     </p>
-
                     <div class="scroll-check">
-                        <label for="financial_statements-input" class="label label_check">
-                            <input type="checkbox" class="input input_check" id="financial_statements-input"
-                              data-role="scroll-check" data-target="#financial_statements-pdf" disabled required>
+                        <label for="agreement-input" class="label label_check">
+                            <input type="checkbox" class="input input_check"
+                              id="agreement-input"
+                              data-role="scroll-check" data-target="#agreement-pdf"
+                              disabled
+                              required>
                             <span class="dialog__confirm-text">上記内容を確認しました。</span>
                         </label>
-
-                        <button type="button" class="button button_width_full button_size_sm"
+                        <button type="button"
+                          class="button button_width_full button_size_sm"
                           data-role="scroll-check-btn"
-                          data-target="#financial_statements-input"
-                          data-download="#download-link-financial_statements"
-                          data-result="financial_statements_at"
-                          data-modal="#financial_statements-pdf-popup"
+                          data-target="#agreement-input"
+                          data-download="#download-link-agreement"
+                          data-result="agreement_download_at"
+                          data-modal="#agreement-pdf-popup"
                           disabled>
                             同意してダウンロード
                         </button>
-
-                        <a th:href="${file.fileUrl}" id="download-link-financial_statements"></a>
+                        <a th:href="${file.fileUrl}" id="download-link-agreement"></a>
                     </div>
                 </div>
             </div>
         </div>
-        <input type="hidden" name="financial_statements_at" id="financial_statements_at" data-role="download-result">
+        <input type="hidden" name="agreement_download_at" data-role="download-result" required>
     </div>
 
-    <!--/* 追加表示ファイル1 修正中 */-->
-    <div class="download-document" th:if="${record['f079'] != null and record['f0116']?.id == 1}"
-      th:with="file=${record['f079'][0]}">
-        <!-- label -->
-        <div class="label label_required">
-            <span class="label__text" th:text="${record['f057']}">
-                追加表示ファイル1
-            </span>
-        </div>
-        <!-- button -->
-        <div class="download-document__inner">
-            <a th:href="${file.fileUrl}" class="download-document__button" data-role="dialog-toggler"
-              data-target="#financial_statements-pdf-popup" th:text="${file.fileName}">
-                追加表示ファイル1
-            </a>
-            <span class="download-document__value" data-role="download-result-display"
-              data-target="financial_statements_at">
-                <!-- 未承諾 -->
-            </span>
-        </div>
-    </div>
-
-    <!--/* 追加表示ファイル2 */-->
-    <div class="download-document" th:if="${record['f082'] != null and record['f0117']?.id == 1}"
-      th:with="file=${record['f082'][0]}">
-        <!-- label -->
-        <div class="label label_required">
-            <span class="label__text" th:text="${record['f081']}">
-                追加表示ファイル2
-            </span>
-        </div>
-        <!-- button -->
-        <div class="download-document__inner">
-            <a th:href="${file.fileUrl}" class="download-document__button" data-role="dialog-toggler"
-              data-target="#financial_statements-pdf-popup" th:text="${file.fileName}">
-                追加表示ファイル2
-            </a>
-            <span class="download-document__value" data-role="download-result-display"
-              data-target="financial_statements_at">
-                <!-- 未承諾 -->
-            </span>
-        </div>
-    </div>
-
-    <!--/* 業務管理者名簿の確認 */-->
-    <div class="download-document">
-        <!-- label -->
-        <div class="label label_required">
-            <span class="label__text">
-                業務管理者名簿の確認
-            </span>
-        </div>
-        <!-- button -->
-        <div class="download-document__inner">
-            <button type="button" class="download-document__button" data-role="dialog-toggler"
-              data-target="#business_manager_list-pdf-popup">
-                業務管理者名簿
-            </button>
-            <span class="download-document__value" data-role="download-result-display"
-              data-target="business_manager_list_at">
-                未承諾
-            </span>
-        </div>
-        <!--/* PDF Popup */-->
-        <div class="dialog dialog_pdf" id="business_manager_list-pdf-popup">
-            <button type="button" class="dialog__close" data-role="dialog-dismiss"></button>
-            <div class="dialog__container">
-                <div class="dialog__body" id="business_manager_list-pdf">
-                    <div data-role="pdf-preview-dl" data-url="/_media/pdf/business_manager_list.pdf"
-                      class="pdf-preview pdf-preview_height_full">
-                        <div class="img img_loading"></div>
-                    </div>
+    <th:block th:if="${cp.result.value['additionalFiles'] != null}">
+        <!--/* 契約時追加表示ファイル 修正中 */-->
+        <th:block th:each="file,meta : ${cp.result.value['additionalFiles']}" th:with="ind=${meta.index}">
+            <div th:if="${file.exists}" class="download-document">
+                <div class="label label_optional">
+                    <span class="label__text" th:text="${file.displayName}">
+                        契約時追加表示ファイル
+                    </span>
                 </div>
 
-                <div class="dialog__footer">
-                    <p class="dialog__footer-text">
-                        ※最後まで確認しないとチェック及びダウンロードができません。
-                    </p>
-
-                    <div class="scroll-check">
-                        <label for="business_manager_list-input" class="label label_check">
-                            <input type="checkbox" class="input input_check" id="business_manager_list-input"
-                              data-role="scroll-check" data-target="#business_manager_list-pdf" disabled required>
-                            <span class="dialog__confirm-text">上記内容を確認しました。</span>
-                        </label>
-
-                        <button type="button" class="button button_width_full button_size_sm"
-                          data-role="scroll-check-btn"
-                          data-target="#business_manager_list-input"
-                          data-download="#download-link-business_manager_list"
-                          data-result="business_manager_list_at"
-                          data-modal="#business_manager_list-pdf-popup"
-                          disabled>
-                            同意してダウンロード
-                        </button>
-
-                        <a href="/_media/pdf/business_manager_list.pdf" target="black" download="業務管理者名簿.pdf"
-                          id="download-link-business_manager_list"></a>
-                    </div>
+                <div class="download-document__inner">
+                    <a th:data-file-data="${file.fileData}" th:data-extension="${file.extension}"
+                      th:text="${file.fileName}" class="download-document__button" data-role="additionalFiles"></a>
                 </div>
             </div>
-        </div>
-        <input type="hidden" name="business_manager_list_at" id="business_manager_list_at" data-role="download-result">
-    </div>
+        </th:block>
+    </th:block>
 </body>
 
 </html>
