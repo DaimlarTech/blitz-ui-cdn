@@ -2,202 +2,204 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>layout sample</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>layout sample</title>
   <script type="module" crossorigin src="/main.js"></script>
   <link rel="stylesheet" crossorigin href="/style.css">
 </head>
 
 <body>
-    <div style="max-width:1200px;margin:0 auto;padding:64px 0;">
-        <div style="margin-top:8px;">
-            <div style="display: flex;flex-direction: column;gap: 16px; margin: 32px 0;">
-                <div
-                  class="fund-schedule-short"
-                  data-role="short-schedule"
-                  data-value="2024/12/12,2024/12/12,2024/12/12 12:12,2024/12/12,2024/12/12,2024/12/12">
-                </div>
-                <div
-                  class="fund-schedule-short"
-                  data-role="short-schedule"
-                  data-value="2024/12/12 12:12,2024/12/12,2024/12/12,2024/12/12">
-                </div>
-            </div>
-
-            <!-- fund schedule -->
-            <div class="fund-schedule">
-                <div class="schedule__item">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|"
-                          th:data-end="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">募集開始</span>
-                            <span class="schedule__value format_datetime"
-                              th:text="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="schedule__item schedule__item_no_bar">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|"
-                          th:data-end="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">募集終了</span>
-                            <span class="schedule__value format_datetime"
-                              th:text="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="schedule__item">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|"
-                          th:data-end="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">募集開始</span>
-                            <span class="schedule__value format_datetime"
-                              th:text="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="schedule__item">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|"
-                          th:data-end="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">募集終了</span>
-                            <span class="schedule__value format_datetime"
-                              th:text="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="schedule__item" th:if="${record['f0107']?.id == 2}">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f042']?.format('yyyy/MM/dd') ?: '--'}|"
-                          th:data-end="|${record['f042']?.format('yyyy/MM/dd') ?: '--'}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">抽選予定日</span>
-                            <span class="schedule__value format_datetime"
-                              th:text="${record['f042']?.format('yyyy/MM/dd') ?: '--'}">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="schedule__item" th:if="${record['f0107']?.id == 2}">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f043']?.format('yyyy/MM/dd') ?: '--'}|"
-                          th:data-end="|${record['f043']?.format('yyyy/MM/dd') ?: '--'}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">キャンセル待ち抽選予定日</span>
-                            <span class="schedule__value format_datetime"
-                              th:text="${record['f043']?.format('yyyy/MM/dd') ?: '--'}">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="schedule__item">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f0211']?.format('yyyy/MM/dd') ?: '--'}${record['f0210']?.format(' HH:mm') ?: ''}|"
-                          th:data-end="|${record['f0211']?.format('yyyy/MM/dd') ?: '--'}${record['f0210']?.format(' HH:mm') ?: ''}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">出資期日</span>
-                            <span class="schedule__value format_datetime"
-                              th:text="|${record['f0211']?.format('yyyy/MM/dd') ?: '--'}${record['f0210']?.format(' HH:mm') ?: ''}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="schedule__item schedule__item_fund_start">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|"
-                          th:data-end="|${record['f046']?.format('yyyy/MM/dd') ?: '--'}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">運用開始</span>
-                            <span class="schedule__value format_date"
-                              th:text="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                        <div class="schedule__fund-run">
-                            <span class="schedule__fund-run-dates format format_date_interval format_num"
-                              th:text="|${record['f0189'] ?: '--'}|">
-                                365
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="schedule__item">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f046']?.format('yyyy/MM/dd') ?: '--'}|"
-                          th:data-end="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">運用終了</span>
-                            <span class="schedule__value format_date"
-                              th:text="|${record['f046']?.format('yyyy/MM/dd') ?: '--'}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="schedule__item">
-                    <div class="schedule__content">
-                        <div
-                          class="schedule__status schedule__status_yet"
-                          th:data-start="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|"
-                          th:data-end="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|">
-                        </div>
-                        <div class="schedule__text">
-                            <span class="schedule__label">償還予定日</span>
-                            <span class="schedule__value format_date"
-                              th:text="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|">
-                                2024/04/04 10:00
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div style="max-width:1200px;margin:0 auto;padding:64px 0;">
+    <div style="margin-top:8px;">
+      <div style="display: flex;flex-direction: column;gap: 16px; margin: 32px 0;">
+        <div
+          class="fund-schedule-short"
+          data-role="short-schedule"
+          data-type="restart"
+          data-method="lottery"
+          data-value="2024/12/12,2024/12/12,2024/12/12 12:12,2024/12/12,2024/12/12,2024/12/12">
         </div>
+        <div
+          class="fund-schedule-short"
+          data-role="short-schedule"
+          data-value="2024/12/12 12:12,2024/12/12,2024/12/12,2024/12/12">
+        </div>
+      </div>
+
+      <!-- fund schedule -->
+      <div class="fund-schedule">
+        <div class="schedule__item">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|"
+              th:data-end="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">募集開始</span>
+              <span class="schedule__value format_datetime"
+                th:text="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="schedule__item schedule__item_no_bar">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|"
+              th:data-end="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">募集終了</span>
+              <span class="schedule__value format_datetime"
+                th:text="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule__item">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|"
+              th:data-end="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">募集開始</span>
+              <span class="schedule__value format_datetime"
+                th:text="|${record['f0207']?.format('yyyy/MM/dd') ?: '--'}${record['f0206']?.format(' HH:mm') ?: ''}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|"
+              th:data-end="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">募集終了</span>
+              <span class="schedule__value format_datetime"
+                th:text="|${record['f0209']?.format('yyyy/MM/dd') ?: '--'}${record['f0208']?.format(' HH:mm') ?: ''}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="schedule__item" th:if="${record['f0107']?.id == 2}">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f042']?.format('yyyy/MM/dd') ?: '--'}|"
+              th:data-end="|${record['f042']?.format('yyyy/MM/dd') ?: '--'}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">抽選予定日</span>
+              <span class="schedule__value format_datetime"
+                th:text="${record['f042']?.format('yyyy/MM/dd') ?: '--'}">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="schedule__item" th:if="${record['f0107']?.id == 2}">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f043']?.format('yyyy/MM/dd') ?: '--'}|"
+              th:data-end="|${record['f043']?.format('yyyy/MM/dd') ?: '--'}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">キャンセル待ち抽選予定日</span>
+              <span class="schedule__value format_datetime"
+                th:text="${record['f043']?.format('yyyy/MM/dd') ?: '--'}">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f0211']?.format('yyyy/MM/dd') ?: '--'}${record['f0210']?.format(' HH:mm') ?: ''}|"
+              th:data-end="|${record['f0211']?.format('yyyy/MM/dd') ?: '--'}${record['f0210']?.format(' HH:mm') ?: ''}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">出資期日</span>
+              <span class="schedule__value format_datetime"
+                th:text="|${record['f0211']?.format('yyyy/MM/dd') ?: '--'}${record['f0210']?.format(' HH:mm') ?: ''}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule__item schedule__item_fund_start">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|"
+              th:data-end="|${record['f046']?.format('yyyy/MM/dd') ?: '--'}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">運用開始</span>
+              <span class="schedule__value format_date"
+                th:text="|${record['f045']?.format('yyyy/MM/dd') ?: '--'}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+            <div class="schedule__fund-run">
+              <span class="schedule__fund-run-dates format format_date_interval format_num"
+                th:text="|${record['f0189'] ?: '--'}|">
+                365
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f046']?.format('yyyy/MM/dd') ?: '--'}|"
+              th:data-end="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">運用終了</span>
+              <span class="schedule__value format_date"
+                th:text="|${record['f046']?.format('yyyy/MM/dd') ?: '--'}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__content">
+            <div
+              class="schedule__status schedule__status_yet"
+              th:data-start="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|"
+              th:data-end="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|">
+            </div>
+            <div class="schedule__text">
+              <span class="schedule__label">償還予定日</span>
+              <span class="schedule__value format_date"
+                th:text="|${record['f047']?.format('yyyy/MM/dd') ?: '--'}|">
+                2024/04/04 10:00
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 
 </html>
