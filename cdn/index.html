@@ -10,47 +10,229 @@
 </head>
 
 <body>
-    <style>
-        body {
-            margin: 64px;
-            /* background: #000; */
-        }
+    <div id="body">
+        <header id="header" style="z-index: 10;">
+            <div class="header__container">
 
-        body>div {
-            margin-bottom: 16px;
-        }
-    </style>
+                <!-- パソコン表示のヘッダー -->
+                <div class="header__desktop-container">
+                    <!-- ロゴとメニューのコンテナ -->
+                    <div class="header__desktop-wrapper">
+                        <!-- ロゴ -->
+                        <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                            <img src="https://placehold.jp/100x100.png" alt="logo" class="header__logo-img">
+                        </a>
+                        <!-- メニュー -->
+                        <nav class="header__desktop-nav">
+                            <ul class="header__desktop-list">
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p042438']?.path ?:'/404'}"
+                                      class="header__desktop-link">ファンド一覧</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p041230']?.path ?:'/404'}"
+                                      class="header__desktop-link">お知らせ</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p044009']?.path ?:'/404'}"
+                                      class="header__desktop-link">ご利用の流れ</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p044008']?.path ?:'/404'}"
+                                      class="header__desktop-link">よくある質問</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p041231']?.path ?:'/404'}"
+                                      class="header__desktop-link">ファンド紹介</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p043823']?.path ?:'/404'}"
+                                      class="header__desktop-link">お問い合わせ</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- 会員登録・ログイン -->
+                    <div class="header__desktop-button-area">
+                        <a th:href="${pages['p042075']?.path ?:'/404'}"
+                          class="button button_type_line button_sm">ログイン</a>
+                        <a th:href="${pages['p042062']?.path ?:'/404'}" class="button button_sm">会員登録</a>
+                    </div>
+                </div>
+                <!-- / .header__desktop-container -->
 
-    <div class="fund-badges">
-        <span class="fund-badge fund-badge_restart_id_1"></span>
-        <span class="fund-badge fund-badge_open_id_1"></span>
-        <span class="fund-badge fund-badge_status_id_1"></span>
-        <span class="fund-badge fund-badge_type fund-badge_type_id_1"></span>
-    </div>
+                <!-- スマホ表示のヘッダー -->
+                <div class="header__mobile-container">
+                    <!-- ロゴ -->
+                    <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                        <img src="https://placehold.jp/100x100.png" alt="logo" class="header__logo-img">
+                    </a>
+                    <!-- ドロワートリガー -->
+                    <button data-role="drawer" data-target="#js-header-drawer"
+                      class="navigation-drawer__trigger"></button>
 
-    <div>
-        <span class="fund-badge fund-badge_restart_id_1"></span>
-        <span class="fund-badge fund-badge_restart_id_2"></span>
-    </div>
+                    <!-- ドロワー -->
+                    <div id="js-header-drawer" data-role="drawer" data-target="#js-header-drawer"
+                      class="navigation-drawer">
+                        <div class="navigation-drawer__dialog">
+                            <!-- ロゴ -->
+                            <header class="navigation-drawer__header">
+                                <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                                    <img src="https://placehold.jp/100x100.png" alt="logo" class="header__logo-img">
+                                </a>
+                            </header>
+                            <div class="navigation-drawer__wrapper">
+                                <!-- メニュー -->
+                                <nav class="navigation-drawer__nav">
+                                    <ul class="navigation-drawer__list">
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p042438']?.path ?:'/404'}"
+                                              class="navigation-drawer__link">
+                                                <span>ファンド一覧</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p041230']?.path ?:'/404'}"
+                                              class="navigation-drawer__link">
+                                                <span>お知らせ</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p044009']?.path ?:'/404'}"
+                                              class="navigation-drawer__link">
+                                                <span>ご利用の流れ</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p044008']?.path ?:'/404'}"
+                                              class="navigation-drawer__link">
+                                                <span>よくある質問</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p041231']?.path ?:'/404'}"
+                                              class="navigation-drawer__link">
+                                                <span>ファンド紹介</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p043823']?.path ?:'/404'}"
+                                              class="navigation-drawer__link">
+                                                <span>お問い合わせ</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- 会員登録・ログイン -->
+                                <div class="navigation-drawer__button-area">
+                                    <a th:href="${pages['p042075']?.path ?:'/404'}"
+                                      class="button button_type_line">ログイン</a>
+                                    <a th:href="${pages['p042062']?.path ?:'/404'}" class="button">会員登録</a>
+                                </div>
+                            </div>
+                            <!-- / .navigation-drawer__wrapper -->
+                        </div>
+                        <!-- / .navigation-drawer__dialog -->
+                    </div>
+                    <!-- / .navigation-drawer -->
 
-    <div>
-        <span class="fund-badge fund-badge_open_id_1"></span>
-        <span class="fund-badge fund-badge_open_id_2"></span>
-    </div>
+                </div>
+                <!-- / .header__mobile-container -->
 
-    <div>
-        <span class="fund-badge fund-badge_status_id_1"></span>
-        <span class="fund-badge fund-badge_status_id_2"></span>
-        <span class="fund-badge fund-badge_status_id_3"></span>
-        <span class="fund-badge fund-badge_status_id_4"></span>
-        <span class="fund-badge fund-badge_status_id_5"></span>
-        <span class="fund-badge fund-badge_status_id_6"></span>
-    </div>
+            </div><!-- / .header__container -->
+        </header>
+        <main id="main" class="inquiry">
+            <h2 class="page-heading"
+              data-value="ファンド紹介">
+                ABOUT
+            </h2>
+        </main>
+        <footer id="footer">
+            <div class="footer__container">
 
-    <div>
-        <span class="fund-badge fund-badge_type fund-badge_type_id_1"></span>
-        <span class="fund-badge fund-badge_type fund-badge_type_id_2"></span>
-        <span class="fund-badge fund-badge_type fund-badge_type_id_null"></span>
+                <div class="footer__wrapper">
+                    <div class="footer__contents"> <!--運営会社-->
+                        <h3 class="footer__heading">運営会社</h3>
+                        <ul class="footer__list">
+                            <li>会社名：<span th:text="${cp.result.value['company_name']}">株式会社○○</span></li>
+                            <li>所在地：<span th:text="${cp.result.value['company_address']}">東京都○○区○○</span></li>
+                            <li>代表者：<span th:text="${cp.result.value['company_ceo']}">代表取締役 大村 太郎</span></li>
+                            <li>業務管理者：<span th:text="${cp.result.value['company_manager']}">大村 太郎</span></li>
+                            <li>免許：<span th:text="${cp.result.value['company_licence']}">不動産特定共同事業許可 第一号業者 ○○県知事
+                                    第〇号</span></li>
+                        </ul>
+                        <p class="footer__text">
+                            ※弊社のクラウドファンディングは電子取引業務を行います。<br />
+                            ※サイトに表示される「利回り」とは、予想利回りであり確定したものではありません。<br />
+                            ※利回り及び元金の保証は出資法の制限により行っておりません。
+                        </p>
+                    </div>
+
+                    <div class="footer__contents"> <!--サイトマップ-->
+                        <h3 class="footer__heading">サイトマップ</h3>
+                        <ul class="footer__list">
+                            <li>
+                                <a th:href="${pages['p041228']?.path ?:'/404'}" class="footer__link">TOP</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p041230']?.path ?:'/404'}" class="footer__link">お知らせ</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p042438']?.path ?:'/404'}" class="footer__link">ファンド</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p041231']?.path ?:'/404'}" class="footer__link">ファンド紹介</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p042062']?.path ?:'/404'}" class="footer__link">仮会員登録</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p042077']?.path ?:'/404'}" class="footer__link">マイページ</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__contents"> <!--法的表示-->
+                        <h3 class="footer__heading">法的表示</h3>
+                        <ul class="footer__list">
+                            <li>
+                                <a th:href="${pages['p043993']?.path ?:'/404'}" class="footer__link">個人情報保護方針</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p043994']?.path ?:'/404'}" class="footer__link">反社会的勢力排除条項</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p043995']?.path ?:'/404'}"
+                                  class="footer__link">電子情報処理組織の管理を十分に行うための基本方針</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p043996']?.path ?:'/404'}" class="footer__link">重要書類の電子交付に関する承諾</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p043997']?.path ?:'/404'}" class="footer__link">主なリスクについて</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p043998']?.path ?:'/404'}" class="footer__link">クーリングオフについて</a>
+                            </li>
+                            <li>
+                                <a th:href="${pages['p043999']?.path ?:'/404'}" class="footer__link">業務管理者名簿</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__copyright">
+                    <p>&copy; <span th:text="${cp.result.value['setting_year']}"></span> <span
+                          th:text="${cp.result.value['company_name']}"></span>. All rights reserved.</p>
+                </div>
+
+            </div>
+        </footer>
     </div>
 </body>
 
