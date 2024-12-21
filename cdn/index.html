@@ -10,6 +10,72 @@
 </head>
 
 <body>
+    <style>
+        body {
+            max-width: 400px;
+            margin-inline: auto;
+            margin-top: 16px;
+        }
+
+        .faq-content {
+            --faq-content-content: 'a';
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .faq-content::before {
+            display: flex;
+            flex-shrink: 0;
+            width: 48px;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            content: var(--faq-content-content);
+        }
+
+        .faq-content_q {
+            --faq-content-content: 'Q';
+        }
+
+        .faq-content_a {
+            --faq-content-content: 'A';
+        }
+    </style>
+    <div class="accordion" data-role="accordion">
+        <div class="accordion__item" data-state="hidden">
+            <div class="accordion__button">
+                <span class="accordion__button-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, excepturi.
+                </span>
+            </div>
+            <div class="accordion__content">
+                <span class="accordion__body">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero obcaecati quidem consequatur
+                    enim impedit veritatis iusto eveniet in. Obcaecati voluptas accusamus unde cumque magni omnis
+                    optio nostrum, officia ad ipsam!
+                </span>
+            </div>
+        </div>
+        <div class="accordion__item" data-state="hidden">
+            <div class="accordion__button">
+                <div class="faq-content faq-content_q">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, excepturi.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion__content">
+                <div class="faq-content faq-content_a">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero obcaecati quidem consequatur
+                        enim impedit veritatis iusto eveniet in. Obcaecati voluptas accusamus unde cumque magni omnis
+                        optio nostrum, officia ad ipsam!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
