@@ -20,7 +20,7 @@
         .faq-content {
             --faq-content-content: 'a';
             display: flex;
-            gap: 8px;
+            column-gap: 24px;
             align-items: center;
         }
 
@@ -30,8 +30,11 @@
             width: 48px;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-weight: bold;
+            font-size: 40px;
             content: var(--faq-content-content);
+            color: var(--color-primary);
+            text-transform: uppercase;
         }
 
         .faq-content_q {
@@ -41,6 +44,10 @@
         .faq-content_a {
             --faq-content-content: 'A';
         }
+
+        .faq-content__text {
+            line-height: var(--line-height-mult)
+        }
     </style>
     <div class="accordion" data-role="accordion">
         <div class="accordion__item" data-state="hidden">
@@ -48,6 +55,7 @@
                 <span class="accordion__button-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, excepturi.
                 </span>
+                <span class="material-symbols-outlined accordion__button-icon">add</span>
             </div>
             <div class="accordion__content">
                 <span class="accordion__body">
@@ -60,14 +68,15 @@
         <div class="accordion__item" data-state="hidden">
             <div class="accordion__button">
                 <div class="faq-content faq-content_q">
-                    <p>
+                    <p class="faq-content__text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, excepturi.
                     </p>
                 </div>
+                <span class="material-symbols-outlined accordion__button-icon">add</span>
             </div>
             <div class="accordion__content">
                 <div class="faq-content faq-content_a">
-                    <p>
+                    <p class="faq-content__text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero obcaecati quidem consequatur
                         enim impedit veritatis iusto eveniet in. Obcaecati voluptas accusamus unde cumque magni omnis
                         optio nostrum, officia ad ipsam!
