@@ -10,62 +10,218 @@
 </head>
 
 <body>
-    <div id="admin-body" >
-        <div>
-            <div style="margin: 4rem; height: 1000px;">
-                <!-- drop down -->
-                <div class="dropdown" data-role="dropdown">
-                    <button class="dropdown__btn">
-                        <span class="material-symbols-outlined">
-                            more_vert
-                        </span>
-                    </button>
-                    <div class="dropdown__list-wrapper">
-                        <ul class="dropdown__list">
-                            <li class="dropdown__list-item">test</li>
-                        </ul>
-                    </div>
-        
-                    <div class="dropdown__content">
-                    </div>
-                </div>
-        
-                <!-- drop down right -->
-                <div class="dropdown dropdown_type_right" data-role="dropdown" style="margin-left: 10rem;">
-                    <button class="dropdown__btn">
-                        <span class="material-symbols-outlined">
-                            more_vert
-                        </span>
-                    </button>
-                    <div class="dropdown__list-wrapper">
-                        <ul class="dropdown__list">
-                            <li class="dropdown__list-item">
-                                <a href="">test</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-        
-                <!-- searchable -->
-                <div class="dropdown dropdown_search" data-role="dropdown">
-                    <button type="button" class="dropdown__btn" data-value="test">test</button>
-                    <div class="dropdown__list-wrapper">
-                        <div class="dropdown__input-wrap">
-                            <input type="text" class="dropdown__input">
-                        </div>
-                        <ul class="dropdown__list">
-                            <li class="dropdown__list-item">test</li>
-                            <li class="dropdown__list-item">
-                                <a href="">test2</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="dropdown__content">
+    <div class="main-member-register__step-header">
+        <div class="main-member-register__step-header-logo-area">
+            <img src="/_media/img/logo.svg" alt="logo" class="main-header__logo">
+        </div>
+        <div class="main-header__step main-member-register__step-header-circle-area">
+            <div class="step-circle__outer step-circle__outer_step-1">
+                <div class="step-circle__inner">
+                    <div class="step-circle__text">
+                        <span class="step-circle__text_current">1</span>/4
                     </div>
                 </div>
             </div>
-            
+            <h1 class="main-header__text" th:text="${stepHeader.head}">stepheader</h1>
         </div>
+    </div>
+
+    <div>
+        <header id="header">
+            <div class="header__container">
+
+                <!-- パソコン表示のヘッダー -->
+                <div class="header__desktop-container">
+                    <!-- ロゴ -->
+                    <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                        <img src="/_media/img/logo.svg" alt="logo" class="header__logo-img">
+                    </a>
+                    <!-- メニュー -->
+                    <nav class="header__desktop-nav">
+                        <ul class="header__desktop-list">
+                            <li class="header__desktop-item">
+                                <a th:href="${pages['p042077']?.path ?:'/404'}" class="header__desktop-icon-link">
+                                    <span class="material-symbols-outlined">home</span>
+                                    <span class="header__desktop-icon-text">ホーム</span>
+                                </a>
+                            </li>
+                            <li class="header__desktop-item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042096']?.path ?:'/404'}" class="header__desktop-icon-link">
+                                    <span class="material-symbols-outlined">apartment</span>
+                                    <span class="header__desktop-icon-text">ファンド</span>
+                                </a>
+                            </li>
+                            <li class="header__desktop-item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042097']?.path ?:'/404'}" class="header__desktop-icon-link">
+                                    <span class="material-symbols-outlined">pending_actions</span>
+                                    <span class="header__desktop-icon-text">出資履歴</span>
+                                </a>
+                            </li>
+                            <li class="header__desktop-item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042444']?.path ?:'/404'}" class="header__desktop-icon-link">
+                                    <span class="material-symbols-outlined">payments</span>
+                                    <span class="header__desktop-icon-text">配当履歴</span>
+                                </a>
+                            </li>
+                            <li class="header__desktop-item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042547']?.path ?:'/404'}" class="header__desktop-icon-link">
+                                    <span class="material-symbols-outlined">contract</span>
+                                    <span class="header__desktop-icon-text">税務書類</span>
+                                </a>
+                            </li>
+                            <li class="header__desktop-item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042518']?.path ?:'/404'}" class="header__desktop-icon-link">
+                                    <span class="material-symbols-outlined">newspaper</span>
+                                    <span class="header__desktop-icon-text">ニュース</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- ユーザー名 -->
+                    <div data-role="open-menus" data-target="desktop-menus" class="header__desktop-username">
+                        <p th:if="${siteClient.record[29]?.id == 2}" th:text="|${siteClient.record[4]} ${siteClient.record[5]}|">user full name</p>
+                        <p th:if="${siteClient.record[29]?.id != 2}" th:text="|${siteClient.record[2]}|">email</p>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        <!-- 会員情報ページへの遷移・ログアウトのメニュー -->
+                        <div data-role="menus" data-value="desktop-menus" class="header__desktop-menus">
+                            <ul class="header__desktop-menus-list">
+                                <li th:if="${siteClient.record[29]?.id == 2}">
+                                    <a th:href="${pages['p042440']?.path ?:'/404'}" class="header__desktop-menus-link">
+                                        <span class="material-symbols-outlined">person</span>
+                                        <span class="header__desktop-menus-text">会員情報</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-logout class="header__desktop-menus-link">
+                                        <span class="material-symbols-outlined">logout</span>
+                                        <span class="header__desktop-menus-text">ログアウト</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- / .header__desktop-username -->
+                </div>
+                <!-- / .header__desktop-container -->
+
+                <!-- スマホ表示のヘッダー -->
+                <div class="header__mobile-container">
+                    <!-- ロゴ -->
+                    <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                        <img src="/_media/img/logo.svg" alt="logo" class="header__logo-img">
+                    </a>
+                    <!-- ドロワートリガー -->
+                    <button data-role="drawer" data-target="#js-header-drawer" class="navigation-drawer__trigger"></button>
+
+                    <!-- ドロワー -->
+                    <div id="js-header-drawer" data-role="drawer" data-target="#js-header-drawer" class="navigation-drawer">
+                        <div class="navigation-drawer__dialog">
+                            <!-- ロゴ -->
+                            <header class="navigation-drawer__header">
+                                <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                                    <img src="/_media/img/logo.svg" alt="logo" class="header__logo-img">
+                                </a>
+                            </header>
+                            <div class="navigation-drawer__wrapper">
+                                <!-- メニュー -->
+                                <nav class="navigation-drawer__nav">
+                                    <ul class="navigation-drawer__list">
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p042077']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <div class="navigation-drawer__icon-wrap">
+                                                    <span class="material-symbols-outlined">home</span>
+                                                    <span>ホーム</span>
+                                                </div>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                            <a th:href="${pages['p042096']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <div class="navigation-drawer__icon-wrap">
+                                                    <span class="material-symbols-outlined">apartment</span>
+                                                    <span>ファンド</span>
+                                                </div>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                            <a th:href="${pages['p042097']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <div class="navigation-drawer__icon-wrap">
+                                                    <span class="material-symbols-outlined">pending_actions</span>
+                                                    <span>出資履歴</span>
+                                                </div>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                            <a th:href="${pages['p042444']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <div class="navigation-drawer__icon-wrap">
+                                                    <span class="material-symbols-outlined">payments</span>
+                                                    <span>配当履歴</span>
+                                                </div>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                            <a th:href="${pages['p042547']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <div class="navigation-drawer__icon-wrap">
+                                                    <span class="material-symbols-outlined">contract</span>
+                                                    <span>税務書類</span>
+                                                </div>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                            <a th:href="${pages['p042518']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <div class="navigation-drawer__icon-wrap">
+                                                    <span class="material-symbols-outlined">newspaper</span>
+                                                    <span>ニュース</span>
+                                                </div>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                            <a th:href="${pages['p042440']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <div class="navigation-drawer__icon-wrap">
+                                                    <span class="material-symbols-outlined">person</span>
+                                                    <span>会員情報</span>
+                                                </div>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- ユーザー名・ログアウト -->
+                                <div class="navigation-drawer__button-area">
+                                    <a href="#" data-logout class="button button_type_line">ログアウト</a>
+                                    <a th:if="${siteClient.record[29]?.id == 2}" th:href="${pages['p042440']?.path ?:'/404'}" th:text="|${siteClient.record[4]} ${siteClient.record[5]}|">user full name</a>
+                                    <span th:if="${siteClient.record[29]?.id != 2}" th:text="|${siteClient.record[2]}|">email</span>
+                                </div>
+                            </div>
+                            <!-- / .navigation-drawer__wrapper -->
+                        </div>
+                        <!-- / .navigation-drawer__dialog -->
+                    </div>
+                    <!-- / .navigation-drawer -->
+                </div>
+                <!-- / .header__mobile-container -->
+
+            </div>
+            <!-- / .header__container -->
+        </header>
+
+        <!--/* サブヘッダー */-->
+        <header class="sub-header__container max-width-container">
+            <!--/* PCのサブヘッダー h1タグ ページのタイトル */-->
+            <div class="sub-header__desktop pl-32">
+                <h1 class="sub-header__desktop-heading">ホーム</h1>
+            </div>
+
+            <!--/* スマホのサブヘッダー 戻るボタンとページタイトル */-->
+            <div class="sub-header__mobile">
+                <h1 class="sub-header__mobile-heading">ホーム</h1>
+            </div>
+        </header>
     </div>
 </body>
 
