@@ -9,32 +9,447 @@
   <link rel="stylesheet" crossorigin href="/style.css">
 </head>
 
-<body>
-    <div class="main-member-register__step-header">
-        <div class="main-member-register__step-header-logo-area">
-            <img src="/_media/img/logo.svg" alt="logo" class="main-header__logo">
+<body style="height: 1000px; background-color: var(--color-gray-light);" class="main_bg">
+    <header class="main-header" hidden>
+        <div class="nav-header">
+            <a class="header-logo">
+                <img src="https://placehold.jp/260x40.png?text=logo" alt="logo" class="header-logo__img">
+            </a>
+
+            <!-- メニュー -->
+            <nav class="header-nav">
+                <ul class="header-nav__list">
+                    <li>
+                        <a th:href="${pages['p042438']?.path ?:'/404'}" class="header-nav__link">ファンド一覧</a>
+                    </li>
+                    <li>
+                        <a th:href="${pages['p041230']?.path ?:'/404'}" class="header-nav__link">お知らせ</a>
+                    </li>
+                    <li>
+                        <a th:href="${pages['p044009']?.path ?:'/404'}" class="header-nav__link">ご利用の流れ</a>
+                    </li>
+                    <li>
+                        <a th:href="${pages['p044008']?.path ?:'/404'}" class="header-nav__link">よくある質問</a>
+                    </li>
+                    <li>
+                        <a th:href="${pages['p041231']?.path ?:'/404'}" class="header-nav__link">ファンド紹介</a>
+                    </li>
+                    <li>
+                        <a th:href="${pages['p043823']?.path ?:'/404'}" class="header-nav__link">お問い合わせ</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-btns">
+                <a th:href="${pages['p042075']?.path ?:'/404'}" class="button button_type_line button_sm">ログイン</a>
+                <a th:href="${pages['p042062']?.path ?:'/404'}" class="button button_sm">会員登録</a>
+            </div>
+
+            <!-- ドロワートリガー -->
+            <button data-role="drawer" data-target="#js-header-drawer" class="navigation-trigger mobile"></button>
         </div>
-        <div class="main-header__step main-member-register__step-header-circle-area">
-            <div class="step-circle__outer step-circle__outer_step-1">
-                <div class="step-circle__inner">
-                    <div class="step-circle__text">
-                        <span class="step-circle__text_current">1</span>/4
+
+        <div id="js-header-drawer" data-role="drawer" data-target="#js-header-drawer" class="navigation-drawer">
+            <div class="navigation-drawer__dialog">
+                <div class="navigation-drawer__wrapper">
+                    <!-- メニュー -->
+                    <nav class="navigation-drawer__nav">
+                        <ul class="navigation-drawer__list">
+                            <li class="navigation-drawer__item">
+                                <a th:href="${pages['p042438']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <span>ファンド一覧</span>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item">
+                                <a th:href="${pages['p041230']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <span>お知らせ</span>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item">
+                                <a th:href="${pages['p044009']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <span>ご利用の流れ</span>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item">
+                                <a th:href="${pages['p044008']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <span>よくある質問</span>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item">
+                                <a th:href="${pages['p041231']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <span>ファンド紹介</span>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item">
+                                <a th:href="${pages['p043823']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <span>お問い合わせ</span>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 会員登録・ログイン -->
+                    <div class="navigation-drawer__button-area">
+                        <a th:href="${pages['p042075']?.path ?:'/404'}" class="button button_type_line">ログイン</a>
+                        <a th:href="${pages['p042062']?.path ?:'/404'}" class="button">会員登録</a>
                     </div>
                 </div>
             </div>
-            <h1 class="main-header__text" th:text="${stepHeader.head}">stepheader</h1>
+        </div>
+    </header>
+
+    <header class="main-header" hidden>
+        <div class="nav-header">
+            <a class="header-logo">
+                <img src="https://placehold.jp/260x40.png?text=logo" alt="logo" class="header-logo__img">
+            </a>
+
+            <!-- メニュー -->
+            <nav class="header-nav desktop">
+                <ul class="header-nav__list">
+                    <li>
+                        <a th:href="${pages['p042077']?.path ?:'/404'}" class="header-nav__link header-nav__link_type_icon is_active">
+                            <span class="material-symbols-outlined">home</span>
+                            <span class="header-nav__text">ホーム</span>
+                        </a>
+                    </li>
+                    <li th:if="${siteClient.record[29]?.id == 2}">
+                        <a th:href="${pages['p042096']?.path ?:'/404'}" class="header-nav__link header-nav__link_type_icon">
+                            <span class="material-symbols-outlined">apartment</span>
+                            <span class="header-nav__text">ファンド</span>
+                        </a>
+                    </li>
+                    <li th:if="${siteClient.record[29]?.id == 2}">
+                        <a th:href="${pages['p042097']?.path ?:'/404'}" class="header-nav__link header-nav__link_type_icon">
+                            <span class="material-symbols-outlined">pending_actions</span>
+                            <span class="header-nav__text">出資履歴</span>
+                        </a>
+                    </li>
+                    <li th:if="${siteClient.record[29]?.id == 2}">
+                        <a th:href="${pages['p042444']?.path ?:'/404'}" class="header-nav__link header-nav__link_type_icon">
+                            <span class="material-symbols-outlined">payments</span>
+                            <span class="header-nav__text">配当履歴</span>
+                        </a>
+                    </li>
+                    <li th:if="${siteClient.record[29]?.id == 2}">
+                        <a th:href="${pages['p042547']?.path ?:'/404'}" class="header-nav__link header-nav__link_type_icon">
+                            <span class="material-symbols-outlined">contract</span>
+                            <span class="header-nav__text">税務書類</span>
+                        </a>
+                    </li>
+                    <li th:if="${siteClient.record[29]?.id == 2}">
+                        <a th:href="${pages['p042518']?.path ?:'/404'}" class="header-nav__link header-nav__link_type_icon">
+                            <span class="material-symbols-outlined">newspaper</span>
+                            <span class="header-nav__text">ニュース</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="desktop">
+                <div data-role="open-menus" data-target="desktop-menus" class="header-user">
+                    <!-- <p th:if="${siteClient.record[29]?.id == 2}" th:text="|${siteClient.record[4]} ${siteClient.record[5]}|">user full name</p> -->
+                    <p th:if="${siteClient.record[29]?.id != 2}" th:text="|${siteClient.record[2]}|">email</p>
+                    <span class="material-symbols-outlined header-user__arrow">keyboard_arrow_down</span>
+
+                    <!-- 会員情報ページへの遷移・ログアウトのメニュー -->
+                    <div data-role="menus" data-value="desktop-menus" class="header-user__menus">
+                        <ul class="header-user__list">
+                            <li th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042440']?.path ?:'/404'}" class="header-user__link">
+                                    <span class="material-symbols-outlined">person</span>
+                                    <span>会員情報</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-logout class="header-user__link">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span>ログアウト</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ドロワートリガー -->
+            <button data-role="drawer" data-target="#js-auth-header-drawer" class="navigation-trigger mobile"></button>
+        </div>
+
+        <div id="js-auth-header-drawer" data-role="drawer" data-target="#js-header-drawer" class="navigation-drawer">
+            <div class="navigation-drawer__dialog">
+                <div class="navigation-drawer__wrapper">
+                    <!-- メニュー -->
+                    <nav class="navigation-drawer__nav">
+                        <ul class="navigation-drawer__list">
+                            <li class="navigation-drawer__item">
+                                <a th:href="${pages['p042077']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <div class="navigation-drawer__icon-wrap">
+                                        <span class="material-symbols-outlined">home</span>
+                                        <span>ホーム</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042096']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <div class="navigation-drawer__icon-wrap">
+                                        <span class="material-symbols-outlined">apartment</span>
+                                        <span>ファンド</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042097']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <div class="navigation-drawer__icon-wrap">
+                                        <span class="material-symbols-outlined">pending_actions</span>
+                                        <span>出資履歴</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042444']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <div class="navigation-drawer__icon-wrap">
+                                        <span class="material-symbols-outlined">payments</span>
+                                        <span>配当履歴</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042547']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <div class="navigation-drawer__icon-wrap">
+                                        <span class="material-symbols-outlined">contract</span>
+                                        <span>税務書類</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042518']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <div class="navigation-drawer__icon-wrap">
+                                        <span class="material-symbols-outlined">newspaper</span>
+                                        <span>ニュース</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li class="navigation-drawer__item" th:if="${siteClient.record[29]?.id == 2}">
+                                <a th:href="${pages['p042440']?.path ?:'/404'}" class="navigation-drawer__link">
+                                    <div class="navigation-drawer__icon-wrap">
+                                        <span class="material-symbols-outlined">person</span>
+                                        <span>会員情報</span>
+                                    </div>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- ユーザー名・ログアウト -->
+                    <div class="navigation-drawer__button-area">
+                        <a href="#" data-logout class="button button_type_line">ログアウト</a>
+                        <a th:if="${siteClient.record[29]?.id == 2}" th:href="${pages['p042440']?.path ?:'/404'}" th:text="|${siteClient.record[4]} ${siteClient.record[5]}|">user full name</a>
+                        <span th:if="${siteClient.record[29]?.id != 2}" th:text="|${siteClient.record[2]}|">email</span>
+                    </div>
+                </div>
+                <!-- / .navigation-drawer__wrapper -->
+            </div>
+        </div>
+    </header>
+
+    <header class="main-header" hidden>
+        <div class="step-header">
+            <div class="step-header__logo">
+                <a href="" class="header-logo">
+                    <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header-logo__img">
+                </a>
+            </div>
+
+            <div class="step-heading desktop">
+                <div class="step-circle">
+                    <div class="step-circle__outer step-circle__outer_step-1">
+                        <div class="step-circle__inner">
+                            <span class="step-circle__text">
+                                <span class="step-circle__text_current">1</span>/4
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <h1>header</h1>
+            </div>
+        </div>
+    </header>
+
+    <header class="main-header">
+        <div class="logo-header">
+            <a href="" class="header-logo">
+                <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header-logo__img">
+            </a>
+        </div>
+    </header>
+
+    <div class="sub-header">
+        <div class="mobile-heading">
+            <span class="material-symbols-outlined">chevron_left</span>
+            <h1>本会員登録</h1>
+        </div>
+    </div>
+    <div class="sub-header">
+        <div class="desktop-heading">
+            <h1>descktop</h1>
+        </div>
+    </div>
+    <div class="sub-header" hidden>
+        <div class="step-heading mobile">
+            <div class="step-circle">
+                <div class="step-circle__outer step-circle__outer_step-1">
+                    <div class="step-circle__inner">
+                        <span class="step-circle__text">
+                            <span class="step-circle__text_current">1</span>/4
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <h1>header</h1>
         </div>
     </div>
 
-    <div>
+
+    <!-- 未認証 -->
+    <div hidden>
+        <header id="header" style="z-index: 10;">
+            <div class="header__container">
+                <!-- パソコン表示のヘッダー -->
+                <div class="header__desktop-container">
+                    <!-- ロゴとメニューのコンテナ -->
+                    <div class="header__desktop-wrapper">
+                        <!-- ロゴ -->
+                        <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                            <img src="https://placehold.jp/260x40.png?text=logo" alt="logo" class="header__logo-img">
+                        </a>
+                        <!-- メニュー -->
+                        <nav class="header__desktop-nav">
+                            <ul class="header__desktop-list">
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p042438']?.path ?:'/404'}" class="header__desktop-link">ファンド一覧</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p041230']?.path ?:'/404'}" class="header__desktop-link">お知らせ</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p044009']?.path ?:'/404'}" class="header__desktop-link">ご利用の流れ</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p044008']?.path ?:'/404'}" class="header__desktop-link">よくある質問</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p041231']?.path ?:'/404'}" class="header__desktop-link">ファンド紹介</a>
+                                </li>
+                                <li class="header__desktop-item">
+                                    <a th:href="${pages['p043823']?.path ?:'/404'}" class="header__desktop-link">お問い合わせ</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- 会員登録・ログイン -->
+                    <div class="header__desktop-button-area">
+                        <a th:href="${pages['p042075']?.path ?:'/404'}" class="button button_type_line button_sm">ログイン</a>
+                        <a th:href="${pages['p042062']?.path ?:'/404'}" class="button button_sm">会員登録</a>
+                    </div>
+                </div>
+                <!-- スマホ表示のヘッダー -->
+                <div class="header__mobile-container">
+                    <!-- ロゴ -->
+                    <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                        <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header__logo-img">
+                    </a>
+                    <!-- ドロワートリガー -->
+                    <button data-role="drawer" data-target="#js-header-drawer" class="navigation-drawer__trigger"></button>
+
+                    <!-- ドロワー -->
+                    <div id="js-header-drawer" data-role="drawer" data-target="#js-header-drawer" class="navigation-drawer">
+                        <div class="navigation-drawer__dialog">
+                            <!-- ロゴ -->
+                            <header class="navigation-drawer__header">
+                                <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
+                                    <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header__logo-img">
+                                </a>
+                            </header>
+                            <div class="navigation-drawer__wrapper">
+                                <!-- メニュー -->
+                                <nav class="navigation-drawer__nav">
+                                    <ul class="navigation-drawer__list">
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p042438']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <span>ファンド一覧</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p041230']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <span>お知らせ</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p044009']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <span>ご利用の流れ</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p044008']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <span>よくある質問</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p041231']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <span>ファンド紹介</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                        <li class="navigation-drawer__item">
+                                            <a th:href="${pages['p043823']?.path ?:'/404'}" class="navigation-drawer__link">
+                                                <span>お問い合わせ</span>
+                                                <span class="material-symbols-outlined">chevron_right</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- 会員登録・ログイン -->
+                                <div class="navigation-drawer__button-area">
+                                    <a th:href="${pages['p042075']?.path ?:'/404'}" class="button button_type_line">ログイン</a>
+                                    <a th:href="${pages['p042062']?.path ?:'/404'}" class="button">会員登録</a>
+                                </div>
+                            </div>
+                            <!-- / .navigation-drawer__wrapper -->
+                        </div>
+                        <!-- / .navigation-drawer__dialog -->
+                    </div>
+                    <!-- / .navigation-drawer -->
+
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- 認証エリア -->
+    <div hidden>
         <header id="header">
             <div class="header__container">
-
                 <!-- パソコン表示のヘッダー -->
                 <div class="header__desktop-container">
                     <!-- ロゴ -->
                     <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
-                        <img src="/_media/img/logo.svg" alt="logo" class="header__logo-img">
+                        <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header__logo-img">
                     </a>
                     <!-- メニュー -->
                     <nav class="header__desktop-nav">
@@ -102,13 +517,12 @@
                     </div>
                     <!-- / .header__desktop-username -->
                 </div>
-                <!-- / .header__desktop-container -->
 
                 <!-- スマホ表示のヘッダー -->
                 <div class="header__mobile-container">
                     <!-- ロゴ -->
                     <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
-                        <img src="/_media/img/logo.svg" alt="logo" class="header__logo-img">
+                        <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header__logo-img">
                     </a>
                     <!-- ドロワートリガー -->
                     <button data-role="drawer" data-target="#js-header-drawer" class="navigation-drawer__trigger"></button>
@@ -119,7 +533,7 @@
                             <!-- ロゴ -->
                             <header class="navigation-drawer__header">
                                 <a th:href="${pages['p041228']?.path ?:'/404'}" class="header__logo">
-                                    <img src="/_media/img/logo.svg" alt="logo" class="header__logo-img">
+                                    <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header__logo-img">
                                 </a>
                             </header>
                             <div class="navigation-drawer__wrapper">
@@ -204,22 +618,136 @@
                     </div>
                     <!-- / .navigation-drawer -->
                 </div>
-                <!-- / .header__mobile-container -->
-
             </div>
-            <!-- / .header__container -->
         </header>
 
-        <!--/* サブヘッダー */-->
-        <header class="sub-header__container max-width-container">
-            <!--/* PCのサブヘッダー h1タグ ページのタイトル */-->
-            <div class="sub-header__desktop pl-32">
-                <h1 class="sub-header__desktop-heading">ホーム</h1>
+        <!-- サブヘッダー -->
+        <header class="sub-header__container max-width-container-md">
+            <!-- PCのサブヘッダー h1タグ ページのタイトル -->
+            <div class="sub-header__desktop">
+                <h1 class="sub-header__desktop-heading">認証エリア</h1>
             </div>
 
+            <!-- スマホのサブヘッダー 戻るボタンとページタイトル -->
+            <div class="sub-header__mobile">
+                <button type="button" onclick="history.back()" class="sub-header__mobile-back">
+                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                </button>
+                <h1 class="sub-header__mobile-heading">認証エリア</h1>
+            </div>
+        </header>
+    </div>
+
+    <!-- ステップヘッダー -->
+    <div hidden>
+        <!-- sm -->
+        <div class="main-member-register__mobile-header">
+            <div class="main-member-register__mobile-logo-header">
+                <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="main-header__logo">
+            </div>
+            <!--/* スマホのサブヘッダー 戻るボタンとページタイトル */-->
+            <div class="main-member-register__sub-header">
+                <button type="button" onclick="history.back()" class="sub-header__mobile-back">
+                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                </button>
+                <h1 class="main-member-register__sub-header-heading">ステップヘッダー</h1>
+            </div>
+        </div>
+        <!-- lg -->
+        <div class="main-member-register__step-header">
+            <div class="main-member-register__step-header-logo-area">
+                <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="main-header__logo">
+            </div>
+            <div class="main-header__step main-member-register__step-header-circle-area">
+                <div class="step-circle__outer step-circle__outer_step-1">
+                    <div class="step-circle__inner">
+                        <div class="step-circle__text">
+                            <span class="step-circle__text_current">1</span>/4
+                        </div>
+                    </div>
+                </div>
+                <h1 class="main-header__text">ステップヘッダー</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- フォームヘッダー -->
+    <div hidden>
+        <header class="header header_form">
+            <div class="main-header">
+                <a href="/" class="main-header__brand">
+                    <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="main-header__logo">
+                </a>
+            </div>
+            <div class="sub-header">
+                <a href="/" class="sub-header__brand">
+                    <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="sub-header__logo">
+                </a>
+            </div>
+            <div class="sub-header">
+                <button class="sub-header__back"></button>
+                <h1 class="sub-header__text" th:text="${cp.result.value['headerText']} ? ${cp.result.value['headerText']} : 'headerText' ">仮会員登録</h1>
+            </div>
+        </header>
+    </div>
+
+    <!-- 本人確認 -->
+    <div hidden>
+        <!-- ヘッダー -->
+        <header class="header header_form" style="display:block;">
+            <div class="main-header">
+                <a href="/mypage" class="main-header__brand">
+                    <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="main-header__logo">
+                </a>
+            </div>
+            <div class="sub-header">
+                <a href="/mypage" class="sub-header__brand">
+                    <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="sub-header__logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- サブヘッダー -->
+        <header class="sub-header__container max-width-container">
+            <!-- PCのサブヘッダー h1タグ ページのタイトル -->
+            <div class="sub-header__desktop">
+                <h1 class="sub-header__desktop-heading">本人確認</h1>
+            </div>
+
+            <!-- スマホのサブヘッダー 戻るボタンとページタイトル -->
+            <div class="sub-header__mobile">
+                <button type="button" onclick="history.back()" class="sub-header__mobile-back">
+                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                </button>
+                <h1 class="sub-header__mobile-heading">本人確認</h1>
+            </div>
+        </header>
+    </div>
+
+    <!-- 承諾事項 -->
+    <div hidden>
+        <!--/* ヘッダー */-->
+        <header class="header header_form">
+            <div class="main-header">
+                <a href="/" class="main-header__brand">
+                    <img src="https://placehold.jp/150x150.png?text=logo" alt="logo" class="main-header__logo">
+                </a>
+            </div>
+            <div class="sub-header">
+                <a href="/" class="sub-header__brand">
+                    <img src="https://placehold.jp/150x150.png?text=logo" alt="logo" class="sub-header__logo">
+                </a>
+            </div>
+        </header>
+        <!--/* サブヘッダー */-->
+        <header class="sub-header__container max-width-container-md">
+            <!--/* PCのサブヘッダー h1タグ ページのタイトル */-->
+            <div class="sub-header__desktop">
+                <h1 class="sub-header__desktop-heading">本会員登録完了</h1>
+            </div>
             <!--/* スマホのサブヘッダー 戻るボタンとページタイトル */-->
             <div class="sub-header__mobile">
-                <h1 class="sub-header__mobile-heading">ホーム</h1>
+                <h1 class="sub-header__mobile-heading">本会員登録完了</h1>
             </div>
         </header>
     </div>
