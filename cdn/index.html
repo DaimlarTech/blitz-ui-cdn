@@ -151,29 +151,27 @@
                 </ul>
             </nav>
 
-            <div class="desktop">
-                <div data-role="open-menus" data-target="desktop-menus" class="header-user">
-                    <!-- <p th:if="${siteClient.record[29]?.id == 2}" th:text="|${siteClient.record[4]} ${siteClient.record[5]}|">user full name</p> -->
-                    <p th:if="${siteClient.record[29]?.id != 2}" th:text="|${siteClient.record[2]}|">email</p>
-                    <span class="material-symbols-outlined header-user__arrow">keyboard_arrow_down</span>
+            <div data-role="open-menus" data-target="desktop-menus" class="header-user">
+                <!-- <p th:if="${siteClient.record[29]?.id == 2}" th:text="|${siteClient.record[4]} ${siteClient.record[5]}|">user full name</p> -->
+                <p th:if="${siteClient.record[29]?.id != 2}" th:text="|${siteClient.record[2]}|">email</p>
+                <span class="material-symbols-outlined header-user__arrow">keyboard_arrow_down</span>
 
-                    <!-- 会員情報ページへの遷移・ログアウトのメニュー -->
-                    <div data-role="menus" data-value="desktop-menus" class="header-user__menus">
-                        <ul class="header-user__list">
-                            <li th:if="${siteClient.record[29]?.id == 2}">
-                                <a th:href="${pages['p042440']?.path ?:'/404'}" class="header-user__link">
-                                    <span class="material-symbols-outlined">person</span>
-                                    <span>会員情報</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-logout class="header-user__link">
-                                    <span class="material-symbols-outlined">logout</span>
-                                    <span>ログアウト</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- 会員情報ページへの遷移・ログアウトのメニュー -->
+                <div data-role="menus" data-value="desktop-menus" class="header-user__menus">
+                    <ul class="header-user__list">
+                        <li th:if="${siteClient.record[29]?.id == 2}">
+                            <a th:href="${pages['p042440']?.path ?:'/404'}" class="header-user__link">
+                                <span class="material-symbols-outlined">person</span>
+                                <span>会員情報</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-logout class="header-user__link">
+                                <span class="material-symbols-outlined">logout</span>
+                                <span>ログアウト</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -264,7 +262,7 @@
         </div>
     </header>
 
-    <header class="main-header" hidden>
+    <header class="main-header">
         <div class="step-header">
             <div class="step-header__logo">
                 <a href="" class="header-logo">
@@ -287,7 +285,7 @@
         </div>
     </header>
 
-    <header class="main-header">
+    <header class="main-header" hidden>
         <div class="logo-header">
             <a href="" class="header-logo">
                 <img src="https://placehold.jp/150x64.png?text=logo" alt="logo" class="header-logo__img">
@@ -306,7 +304,7 @@
             <h1>descktop</h1>
         </div>
     </div>
-    <div class="sub-header" hidden>
+    <div class="sub-header">
         <div class="step-heading mobile">
             <div class="step-circle">
                 <div class="step-circle__outer step-circle__outer_step-1">
