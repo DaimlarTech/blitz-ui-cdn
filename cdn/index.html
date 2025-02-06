@@ -40,7 +40,7 @@
                 </ul>
             </nav>
 
-            <div class="header-btns">
+            <div class="header-btns nav-header__last">
                 <a th:href="${pages['p042075']?.path ?:'/404'}" class="button button_type_line button_sm">ログイン</a>
                 <a th:href="${pages['p042062']?.path ?:'/404'}" class="button button_sm">会員登録</a>
             </div>
@@ -103,7 +103,7 @@
         </div>
     </header>
 
-    <header class="main-header" hidden>
+    <header class="main-header">
         <div class="nav-header">
             <a class="header-logo">
                 <img src="https://placehold.jp/260x40.png?text=logo" alt="logo" class="header-logo__img">
@@ -151,7 +151,7 @@
                 </ul>
             </nav>
 
-            <div data-role="open-menus" data-target="desktop-menus" class="header-user">
+            <div data-role="open-menus" data-target="desktop-menus" class="header-user nav-header__last">
                 <!-- <p th:if="${siteClient.record[29]?.id == 2}" th:text="|${siteClient.record[4]} ${siteClient.record[5]}|">user full name</p> -->
                 <p th:if="${siteClient.record[29]?.id != 2}" th:text="|${siteClient.record[2]}|">email</p>
                 <span class="material-symbols-outlined header-user__arrow">keyboard_arrow_down</span>
@@ -262,7 +262,7 @@
         </div>
     </header>
 
-    <header class="main-header">
+    <header class="main-header" hidden>
         <div class="step-header">
             <div class="step-header__logo">
                 <a href="" class="header-logo">
